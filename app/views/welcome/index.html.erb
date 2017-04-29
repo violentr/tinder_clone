@@ -1,16 +1,15 @@
 <div class="container">
   <h1>Welcome to <%= application_name %><div style="color:red;font-size:23px;"> loged in as: <%= current_user.email %>! </div> </h2>
-  Avatar <%= image_tag current_user.avatar(:thumb) %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-</div>
 
 <%= form_for Upload.new, url: welcome_upload_path, html: { multipart: true } do |form| %>
   <%= form.file_field :image %>
-  <%= form.submit "Ok" %>
+  <%= form.submit "Upload" %>
 <% end %>
 
 <% if @images.present? %>
   <% @images.each do |item| %>
-    <%= image_tag item.image(:medium) %>
+    <%= image_tag item.image(:medium)%>
   <% end %>
 <% end %>
+
+</div>
