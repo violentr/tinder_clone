@@ -12,7 +12,7 @@ end
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-gem 'bootstrap'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'paperclip'
 # Use Puma as the app server
