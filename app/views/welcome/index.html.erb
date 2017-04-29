@@ -2,3 +2,14 @@
   <h1>Welcome to <%= application_name %><div style="color:red;font-size:23px;"> loged in as: <%= current_user.email %>! </div> </h2>
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 </div>
+
+<%= form_for Upload.new, url: welcome_upload_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :image %>
+  <%= form.submit "Ok" %>
+<% end %>
+
+<% if @images.present? %>
+  <% @images.each do |item| %>
+    <%= image_tag item.image(:medium) %>
+  <% end %>
+<% end %>
