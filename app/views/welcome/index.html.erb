@@ -1,9 +1,18 @@
 <div class="container">
-  <h1>Welcome to <%= application_name %><div style="color:red;font-size:23px;"> loged in as: <%= current_user.email %>! </div> </h2>
-
+  <h1>Welcome to <%= application_name %></h2>
 <%= form_for Upload.new, url: welcome_upload_path, html: { multipart: true } do |form| %>
-  <%= form.file_field :image %>
-  <%= form.submit "Upload" %>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= form.file_field :image %>
+        </div>
+        <div class="panel-body">
+          <%= form.submit "Upload", class: "btn btn-info"%>
+        </div>
+      </div>
+    </div>
+ </div>
 <% end %>
 
 <% if @images.present? %>
