@@ -1,9 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header"><a class="navbar-brand navbar-link" href="<%= root_path %>"><%= application_name %></a>
-      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
     </div>
     <div class="navbar-collapse collapse" id="navcol-1" aria-expanded="false">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Image library' , images_path %></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">

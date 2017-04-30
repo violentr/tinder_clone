@@ -1,24 +1,3 @@
 <div class="container">
   <h1>Welcome to <%= application_name %></h2>
-<%= form_for Upload.new, url: welcome_upload_path, html: { multipart: true } do |form| %>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= form.file_field :image %>
-        </div>
-        <div class="panel-body">
-          <%= form.submit "Upload", class: "btn btn-info"%>
-        </div>
-      </div>
-    </div>
- </div>
-<% end %>
-
-<% if @images.present? %>
-  <% @images.each do |item| %>
-    <%= image_tag item.image(:medium)%>
-  <% end %>
-<% end %>
-
 </div>
