@@ -9,6 +9,12 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    s3_region: ENV["AWS_S3_REGION"],
+    :s3_host_name => ENV["AWS_S3_HOST_NAME"],
+    :bucket => ENV["AWS_S3_BUCKET"]
+  }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Show full error reports.
   config.consider_all_requests_local = true
