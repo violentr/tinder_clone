@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron">
+    <% @user.uploads.each do |uploaded| %>
+      <%= image_tag uploaded.image(:medium) %>
+    <% end %>
+    <%= form_for 'attitude', url: users_attitude_path do |f| %>
+      <%= f.hidden_field "user_id", value: @user.id %>
+      <%= f.submit "Like", name: "like" ,class: "btn btn-info" %>
+      <%= f.submit "Dislike", name: "dislike", class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

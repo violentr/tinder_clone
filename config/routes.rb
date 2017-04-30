@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users', to: "users#index"
+  post '/users/attitude'
+
   get '/images', to: "images#index"
   post 'images/upload'
 

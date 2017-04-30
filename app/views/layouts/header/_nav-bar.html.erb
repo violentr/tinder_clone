@@ -8,6 +8,7 @@
     <div class="navbar-collapse collapse" id="navcol-1" aria-expanded="false">
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_to 'Image library' , images_path %></li>
+        <li><%= link_to 'Users list' , users_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
