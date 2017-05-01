@@ -16,6 +16,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'acts_as_votable', '~> 0.10.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
