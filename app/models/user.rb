@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 
-  def self.filter_voted_users
-    includes(:uploads) - (filter_users_by("like") + filter_users_by("dislike"))
+  def filter_voted_users(user_id)
+    User.includes(:uploads) - (filter_users_by("like", user_id) + filter_users_by("dislike", user_id))
   end
 
 
-  def self.filter_users_by(condition)
-    liked = ActsAsVotable::Vote.where(vote_scope: condition)
-    find(liked.pluck(:votable_id))
+  def filter_users_by(condition, user_id)
+    liked = ActsAsVotable::Vote.where(vote_scope: condition, voter_id: user_id)
+    User.find(liked.pluck(:votable_id))
   end
 end
