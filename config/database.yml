@@ -17,5 +17,9 @@ test:
   database: tinder_test
 
 production:
-  <<: *default
-  database: tinder_prod
+  host: <%= ENV["DATABASE_HOSTN"] %>
+  adapter: postgresql
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  pool: 5
+  database: <%= ENV["DATABASE"] %>

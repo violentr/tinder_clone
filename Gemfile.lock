@@ -231,7 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
-  aws-sdk
+  aws-sdk (~> 2)
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara

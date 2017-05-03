@@ -4,19 +4,35 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    s3_region: ENV["AWS_S3_REGION"],
-    :s3_host_name => ENV["AWS_S3_HOST_NAME"],
-    :bucket => ENV["AWS_S3_BUCKET"]
-  }
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('AWS_S3_BUCKET'),
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('AWS_SECRET_KEY_ID'),
+      s3_region: ENV.fetch('AWS_S3_REGION'),
+      s3_host_name:  "s3-#{ENV['AWS_S3_REGION']}.amazonaws.com"
+    }
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
+  Rails.application.routes.default_url_options[:host] = "gmail.com"
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'www.gmail.com',
+    user_name:            ENV.fetch("EMAIL_USER"),
+    password:             ENV.fetch("EMAIL_PASSWORD"),
+    authentication:       'plain',
+    enable_starttls_auto: true  }
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
