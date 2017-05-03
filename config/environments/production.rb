@@ -23,12 +23,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  Rails.application.routes.default_url_options[:host] = "gmail.com"
+  Rails.application.routes.default_url_options[:host] = ENV["WEB_DOMAIN"]
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'www.gmail.com',
+    domain:               ENV.fetch('WEB_DOMAIN'),
     user_name:            ENV.fetch("EMAIL_USER"),
     password:             ENV.fetch("EMAIL_PASSWORD"),
     authentication:       'plain',
